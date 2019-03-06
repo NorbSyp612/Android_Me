@@ -25,18 +25,21 @@ public class MasterListFragment extends Fragment {
     public static final String LIST_INDEX = "list_index";
 
 
+    public MasterListFragment() {
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mImageIds = AndroidImageAssets.getAll();
         View rootView = inflater.inflate(R.layout.fragment_master_list, container, false);
 
         int i = 0;
 
         for (int a : mImageIds) {
             mGridView = (ImageView) rootView.findViewById(a);
-            mGridView.setImageResource(mImageIds.get(0));
+            mGridView.setImageResource(mImageIds.get(i));
             i++;
         }
 
@@ -48,5 +51,8 @@ public class MasterListFragment extends Fragment {
     }
 
 
+    public void setImageIds(List<Integer> imageIds) {
+        mImageIds = imageIds;
+    }
 
 }
